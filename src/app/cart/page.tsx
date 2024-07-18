@@ -1,9 +1,9 @@
 import Page from "@/components/template/Page";
 
-export default function Home() {
+export default function PageCart() {
     return (
         <Page>
-            <div>HOME</div>
+            <div>Cart</div>
         </Page>
     );
 }

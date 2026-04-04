@@ -1,6 +1,6 @@
 import ProductCard from "@/components/product/ProductCard";
 import Page from "@/components/template/Page";
-import { fetchProducts } from "@/data/services/productService";
+import { fetchProducts } from "@/data/services/ProductService";
 
 export default async function Home() {
     const products = await fetchProducts();
@@ -34,7 +34,7 @@ export default async function Home() {
                 </div>
                 <div className="hidden md:flex gap-4 relative z-10">
                     {[
-                        { label: "Produtos", value: "500+" },
+                        { label: "Produtos", value: "100+" },
                         { label: "Clientes", value: "12k+" },
                         { label: "Avaliação", value: "4.9★" },
                     ].map((stat) => (

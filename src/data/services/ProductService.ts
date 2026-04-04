@@ -19,14 +19,14 @@ export async function fetchCategories(): Promise<string[]> {
 
 export async function fetchDeals(): Promise<Product[]> {
     const res = await fetch("https://dummyjson.com/products?limit=0", {
-        next: { revalidate: 7200 }, // 2 horas
+        next: { tags: ["deals"] },
     });
     if (!res.ok) throw new Error("Falha ao buscar ofertas");
     const data = await res.json();
     const products: Product[] = data.products;
 
     // Seed baseada no bloco de 2h atual — mesma seed = mesmo resultado
-    const seed = Math.floor(Date.now() / (1000 * 60 * 60 * 2));
+    const seed = Math.floor(Date.now() / (1000 * 60 * 60 * 24));
     const seededRandom = (i: number) => {
         const x = Math.sin(seed + i) * 10000;
         return x - Math.floor(x);

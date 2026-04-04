@@ -23,7 +23,7 @@ export default function CartTotal(props: CartTotalProps) {
             <div className="flex flex-col gap-3 text-sm">
                 <div className="flex justify-between text-[var(--text-secondary)]">
                     <span>Subtotal</span>
-                    <span>R$ {subtotal.toFixed(2)}</span>
+                    <span>$ {subtotal.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between text-[var(--text-secondary)]">
                     <span>Frete</span>
@@ -36,7 +36,7 @@ export default function CartTotal(props: CartTotalProps) {
                         Total
                     </span>
                     <span className="font-bold text-xl text-[var(--brand)]">
-                        R$ {total.toFixed(2)}
+                        $ {total.toFixed(2)}
                     </span>
                 </div>
             </div>

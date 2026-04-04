@@ -30,11 +30,11 @@ export default function CartItemWidget(props: CartItemWidgetProps) {
                 </p>
                 <div className="flex items-center gap-2 mt-2">
                     <span className="text-sm text-[var(--text-muted)]">
-                        R$ {item.product.price.toFixed(2)} × {item.quantity}
+                        $ {item.product.price.toFixed(2)} × {item.quantity}
                     </span>
                     <span className="text-[var(--text-muted)]">·</span>
                     <span className="font-semibold text-[var(--brand)]">
-                        R$ {(item.product.price * item.quantity).toFixed(2)}
+                        $ {(item.product.price * item.quantity).toFixed(2)}
                     </span>
                 </div>
             </div>

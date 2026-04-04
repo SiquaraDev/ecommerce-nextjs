@@ -48,7 +48,7 @@ export default function ProductCard(props: ProductCardProps) {
                     <div>
                         <p className="text-xs text-[var(--text-muted)]">por</p>
                         <p className="text-lg font-semibold text-[var(--text-primary)]">
-                            R$ {price.toFixed(2)}
+                            $ {price.toFixed(2)}
                         </p>
                     </div>
                     <button

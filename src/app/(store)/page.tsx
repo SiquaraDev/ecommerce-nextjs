@@ -1,12 +1,12 @@
-"use client";
 import ProductCard from "@/components/product/ProductCard";
 import Page from "@/components/template/Page";
-import products from "@/data/constants/products";
+import { fetchProducts } from "@/data/services/productService";
 
-export default function Home() {
+export default async function Home() {
+    const products = await fetchProducts();
+
     return (
         <Page>
-            {/* Hero banner */}
             <div className="rounded-2xl bg-[var(--text-primary)] text-white px-10 py-12 mb-10 flex items-center justify-between overflow-hidden relative">
                 <div
                     className="absolute inset-0 opacity-10"
@@ -51,7 +51,6 @@ export default function Home() {
                 </div>
             </div>
 
-            {/* Products section */}
             <div>
                 <div className="flex items-center justify-between mb-6">
                     <div>
@@ -66,7 +65,6 @@ export default function Home() {
                         Ver todos →
                     </button>
                 </div>
-
                 <div className="flex gap-6 flex-wrap justify-start">
                     {products.map((product) => (
                         <ProductCard key={product.id} product={product} />

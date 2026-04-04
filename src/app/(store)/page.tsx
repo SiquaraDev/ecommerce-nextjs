@@ -29,9 +29,12 @@ export default async function Home() {
                     <p className="text-white/60 text-sm mt-2 max-w-xs leading-relaxed">
                         The best products with fast delivery and fair pricing.
                     </p>
-                    <button className="mt-6 bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white text-sm font-semibold px-6 py-3 rounded-xl transition-colors">
+                    <a
+                        href="/categories"
+                        className="mt-6 inline-block bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white text-sm font-semibold px-6 py-3 rounded-xl transition-colors"
+                    >
                         Explore now
-                    </button>
+                    </a>
                 </div>
                 <div className="flex flex-row flex-wrap gap-2 sm:gap-4 relative z-10">
                     {[

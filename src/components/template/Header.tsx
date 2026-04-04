@@ -6,6 +6,12 @@ import { useSearch } from "@/data/contexts/SearchContext";
 import Cart from "./Cart";
 import Logo from "./Logo";
 
+const navLinks = [
+    { href: "/", label: "Home" },
+    { href: "/categories", label: "Categories" },
+    { href: "/offers", label: "Offers" },
+];
+
 export default function Header() {
     const [menuOpen, setMenuOpen] = useState(false);
     const { query, setQuery } = useSearch();
@@ -18,25 +24,21 @@ export default function Header() {
             <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
                 <Logo />
 
+                {/* Nav desktop */}
                 <nav className="hidden md:flex items-center gap-6 text-sm text-[var(--text-secondary)]">
-                    <a
-                        href="/"
-                        className="hover:text-[var(--text-primary)] transition-colors"
-                    >
-                        Home
-                    </a>
-                    <a
-                        href="/categories"
-                        className="hover:text-[var(--text-primary)] transition-colors"
-                    >
-                        Categories
-                    </a>
-                    <a
-                        href="/offers"
-                        className="hover:text-[var(--text-primary)] transition-colors"
-                    >
-                        Offers
-                    </a>
+                    {navLinks.map(({ href, label }) => (
+                        <a
+                            key={href}
+                            href={href}
+                            className={`transition-colors pb-0.5 ${
+                                pathname === href
+                                    ? "text-[var(--text-primary)] font-semibold border-b-2 border-[var(--brand)]"
+                                    : "hover:text-[var(--text-primary)]"
+                            }`}
+                        >
+                            {label}
+                        </a>
+                    ))}
                 </nav>
 
                 <div className="flex items-center gap-3">
@@ -153,26 +155,22 @@ export default function Header() {
                 </div>
             </div>
 
+            {/* Menu mobile expandido */}
             {menuOpen && (
                 <div className="md:hidden border-t border-[var(--border)] bg-[var(--surface)] px-4 py-4 flex flex-col gap-4 text-sm text-[var(--text-secondary)]">
-                    <a
-                        href="/"
-                        className="hover:text-[var(--text-primary)] transition-colors"
-                    >
-                        Home
-                    </a>
-                    <a
-                        href="/categories"
-                        className="hover:text-[var(--text-primary)] transition-colors"
-                    >
-                        Categories
-                    </a>
-                    <a
-                        href="/offers"
-                        className="hover:text-[var(--text-primary)] transition-colors"
-                    >
-                        Offers
-                    </a>
+                    {navLinks.map(({ href, label }) => (
+                        <a
+                            key={href}
+                            href={href}
+                            className={`transition-colors px-3 py-2 rounded-lg ${
+                                pathname === href
+                                    ? "text-[var(--brand)] font-semibold bg-[var(--surface-2)]"
+                                    : "hover:text-[var(--text-primary)]"
+                            }`}
+                        >
+                            {label}
+                        </a>
+                    ))}
                     {!isCartPage && (
                         <div className="flex items-center gap-2 border border-[var(--border)] rounded-xl px-3 py-2 focus-within:border-[var(--brand)] transition-colors">
                             <svg

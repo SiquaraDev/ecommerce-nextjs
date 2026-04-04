@@ -59,7 +59,7 @@ export default async function Home() {
                 <div className="flex items-center justify-between mb-6">
                     <div>
                         <h2 className="text-xl font-semibold text-[var(--text-primary)]">
-                            Em destaque
+                            Todos os produtos
                         </h2>
                         <p className="text-sm text-[var(--text-muted)] mt-0.5">
                             {products.length} produtos disponíveis

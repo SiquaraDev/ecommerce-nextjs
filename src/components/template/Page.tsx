@@ -1,3 +1,4 @@
+"use client";
 import Header from "./Header";
 
 export interface PageProps {

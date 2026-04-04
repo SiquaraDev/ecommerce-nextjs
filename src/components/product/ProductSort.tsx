@@ -1,5 +1,6 @@
 "use client";
 import { useState, useMemo, useRef, useEffect } from "react";
+import { useSearch } from "@/data/contexts/SearchContext";
 import Product from "@/data/model/Product";
 import ProductCard from "./ProductCard";
 
@@ -16,6 +17,8 @@ const options: { value: SortOption; label: string }[] = [
 export default function ProductSort({ products }: { products: Product[] }) {
     const [sort, setSort] = useState<SortOption>("none");
     const [open, setOpen] = useState(false);
+    const { query } = useSearch();
+
     const ref = useRef<HTMLDivElement>(null);
 
     // Fecha ao clicar fora
@@ -31,15 +34,21 @@ export default function ProductSort({ products }: { products: Product[] }) {
     }, []);
 
     const sorted = useMemo(() => {
-        if (sort === "none") return products;
-        return [...products].sort((a, b) => {
+        let result = query.trim()
+            ? products.filter((p) =>
+                  p.title.toLowerCase().includes(query.toLowerCase()),
+              )
+            : products;
+
+        if (sort === "none") return result;
+        return [...result].sort((a, b) => {
             if (sort === "az") return a.title.localeCompare(b.title);
             if (sort === "za") return b.title.localeCompare(a.title);
             if (sort === "asc") return a.price - b.price;
             if (sort === "desc") return b.price - a.price;
             return 0;
         });
-    }, [products, sort]);
+    }, [products, sort, query]);
 
     const selected = options.find((o) => o.value === sort)!;
 
@@ -51,7 +60,10 @@ export default function ProductSort({ products }: { products: Product[] }) {
                         Todos os produtos
                     </h2>
                     <p className="text-sm text-[var(--text-muted)] mt-0.5">
-                        {products.length} produtos disponíveis
+                        {sorted.length}{" "}
+                        {query
+                            ? "resultados encontrados"
+                            : "produtos disponíveis"}
                     </p>
                 </div>
 

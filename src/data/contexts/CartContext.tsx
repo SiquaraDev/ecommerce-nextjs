@@ -1,8 +1,7 @@
 "use client";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import Product from "../model/Product";
 import CartItem from "../model/CartItem";
-import useLocalStorage from "../hooks/useLocalStorage";
 
 interface CartContextProps {
     items: CartItem[];
@@ -14,48 +13,32 @@ interface CartContextProps {
 
 const CartContext = createContext<CartContextProps>({} as any);
 
-export function CartProvider(props: any) {
+export function CartProvider({ children }: { children: React.ReactNode }) {
     const [items, setItems] = useState<CartItem[]>([]);
-    const { set, get } = useLocalStorage();
-
-    useEffect(() => {
-        const cart = get("cart") as CartItem[];
-        if (cart) {
-            setItems(cart);
-        }
-    }, [get]);
 
     function add(product: Product) {
         const i = items.findIndex((i) => i.product.id === product.id);
-
         if (i === -1) {
-            modifyItems([...items, { product, quantity: 1 }]);
+            setItems([...items, { product, quantity: 1 }]);
         } else {
             const newItems = [...items];
             newItems[i].quantity++;
-            modifyItems(newItems);
+            setItems(newItems);
         }
     }
 
     function remove(item: Product) {
         const newItems = items
             .map((i) => {
-                if (i.product.id === item.id) {
-                    i.quantity--;
-                }
+                if (i.product.id === item.id) i.quantity--;
                 return i;
             })
             .filter((i) => i.quantity > 0);
-        modifyItems(newItems);
+        setItems(newItems);
     }
 
     function clear() {
-        modifyItems([]);
-    }
-
-    function modifyItems(newItems: CartItem[]) {
-        setItems(newItems);
-        set("cart", newItems);
+        setItems([]);
     }
 
     return (
@@ -66,14 +49,11 @@ export function CartProvider(props: any) {
                 remove,
                 clear,
                 get itemsQuantity() {
-                    return items.reduce(
-                        (total, item) => total + item.quantity,
-                        0
-                    );
+                    return items.reduce((total, i) => total + i.quantity, 0);
                 },
             }}
         >
-            {props.children}
+            {children}
         </CartContext.Provider>
     );
 }

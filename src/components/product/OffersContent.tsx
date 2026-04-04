@@ -21,23 +21,23 @@ export default function OffersContent({ products }: { products: Product[] }) {
                 />
                 <div className="relative z-10">
                     <p className="text-[var(--brand)] text-sm font-medium mb-2 uppercase tracking-widest">
-                        Tempo limitado
+                        Limited time
                     </p>
                     <h1
                         className="text-3xl sm:text-4xl font-bold leading-tight max-w-sm"
                         style={{ fontFamily: "var(--font-display)" }}
                     >
-                        Ofertas do dia
+                        Daily deals
                     </h1>
                     <p className="text-white/60 text-sm mt-2 max-w-xs leading-relaxed">
-                        Produtos selecionados com os melhores preços. Aproveite!
+                        Selected products at the best prices. Don't miss out!
                     </p>
                 </div>
                 <div className="flex flex-row flex-wrap gap-2 sm:gap-4 relative z-10">
                     {[
-                        { label: "Em oferta", value: `${deals.length}` },
-                        { label: "Desconto médio", value: "30%" },
-                        { label: "Frete", value: "Grátis" },
+                        { label: "On sale", value: `${deals.length}` },
+                        { label: "Avg. discount", value: "30%" },
+                        { label: "Shipping", value: "Free" },
                     ].map((stat) => (
                         <div
                             key={stat.label}

@@ -23,10 +23,10 @@ export default function EmptyCart() {
 
             <div>
                 <h2 className="text-2xl font-semibold text-[var(--text-primary)]">
-                    Seu carrinho está vazio
+                    Your cart is empty
                 </h2>
                 <p className="text-[var(--text-muted)] mt-1 text-sm">
-                    Explore nossa loja e adicione produtos que você gostou.
+                    Browse our store and add products you like.
                 </p>
             </div>
 
@@ -34,7 +34,7 @@ export default function EmptyCart() {
                 href="/"
                 className="inline-flex items-center gap-2 bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white font-medium px-6 py-3 rounded-xl text-sm transition-colors"
             >
-                Ver produtos
+                Browse products
                 <svg
                     width="14"
                     height="14"

@@ -18,25 +18,24 @@ export default function Header() {
             <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
                 <Logo />
 
-                {/* Nav desktop */}
                 <nav className="hidden md:flex items-center gap-6 text-sm text-[var(--text-secondary)]">
                     <a
                         href="/"
                         className="hover:text-[var(--text-primary)] transition-colors"
                     >
-                        Início
+                        Home
                     </a>
                     <a
                         href="/categories"
                         className="hover:text-[var(--text-primary)] transition-colors"
                     >
-                        Categorias
+                        Categories
                     </a>
                     <a
                         href="/offers"
                         className="hover:text-[var(--text-primary)] transition-colors"
                     >
-                        Ofertas
+                        Offers
                     </a>
                 </nav>
 
@@ -64,7 +63,7 @@ export default function Header() {
                                         onChange={(e) =>
                                             setQuery(e.target.value)
                                         }
-                                        placeholder="Buscar produtos..."
+                                        placeholder="Search products..."
                                         className="text-sm bg-transparent outline-none text-[var(--text-primary)] placeholder:text-[var(--text-muted)] w-40"
                                     />
                                     <button
@@ -113,14 +112,13 @@ export default function Header() {
                                         <circle cx="11" cy="11" r="8" />
                                         <path d="M21 21l-4.35-4.35" />
                                     </svg>
-                                    Buscar
+                                    Search
                                 </button>
                             )}
                         </div>
                     )}
                     <Cart />
 
-                    {/* Botão hamburguer mobile */}
                     <button
                         className="md:hidden w-9 h-9 flex items-center justify-center rounded-lg border border-[var(--border)] text-[var(--text-secondary)]"
                         onClick={() => setMenuOpen((prev) => !prev)}
@@ -155,26 +153,25 @@ export default function Header() {
                 </div>
             </div>
 
-            {/* Menu mobile expandido */}
             {menuOpen && (
                 <div className="md:hidden border-t border-[var(--border)] bg-[var(--surface)] px-4 py-4 flex flex-col gap-4 text-sm text-[var(--text-secondary)]">
                     <a
                         href="/"
                         className="hover:text-[var(--text-primary)] transition-colors"
                     >
-                        Início
+                        Home
                     </a>
                     <a
                         href="/categories"
                         className="hover:text-[var(--text-primary)] transition-colors"
                     >
-                        Categorias
+                        Categories
                     </a>
                     <a
                         href="/offers"
                         className="hover:text-[var(--text-primary)] transition-colors"
                     >
-                        Ofertas
+                        Offers
                     </a>
                     {!isCartPage && (
                         <div className="flex items-center gap-2 border border-[var(--border)] rounded-xl px-3 py-2 focus-within:border-[var(--brand)] transition-colors">
@@ -194,7 +191,7 @@ export default function Header() {
                                 type="text"
                                 value={query}
                                 onChange={(e) => setQuery(e.target.value)}
-                                placeholder="Buscar produtos..."
+                                placeholder="Search products..."
                                 className="text-sm bg-transparent outline-none text-[var(--text-primary)] placeholder:text-[var(--text-muted)] w-full"
                             />
                         </div>

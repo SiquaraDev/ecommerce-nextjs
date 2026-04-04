@@ -43,14 +43,13 @@ export default function CartItemWidget(props: CartItemWidgetProps) {
                         <span className="text-sm text-[var(--text-muted)]">
                             {onSale && item.product.discountPercentage > 0 && (
                                 <span className="line-through mr-1">
-                                    R$ {item.product.price.toFixed(2)}
+                                    $ {item.product.price.toFixed(2)}
                                 </span>
                             )}
-                            R$ {discountedPrice.toFixed(2)} × {item.quantity}
+                            $ {discountedPrice.toFixed(2)} × {item.quantity}
                         </span>
-                        <span className="text-[var(--text-muted)]">·</span>
                         <span className="font-semibold text-[var(--brand)]">
-                            R$ {(discountedPrice * item.quantity).toFixed(2)}
+                            $ {(discountedPrice * item.quantity).toFixed(2)}
                         </span>
                     </div>
                 </div>

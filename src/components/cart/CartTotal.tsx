@@ -25,7 +25,7 @@ export default function CartTotal(props: CartTotalProps) {
     return (
         <div className="bg-[var(--surface)] rounded-2xl border border-[var(--border)] p-6">
             <h2 className="font-semibold text-[var(--text-primary)] text-lg mb-4">
-                Resumo do pedido
+                Order summary
             </h2>
 
             <div className="flex flex-col gap-3 text-sm">
@@ -34,9 +34,9 @@ export default function CartTotal(props: CartTotalProps) {
                     <span>$ {subtotal.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between text-[var(--text-secondary)]">
-                    <span>Frete</span>
+                    <span>Shipping</span>
                     <span className="text-[var(--success)] font-medium">
-                        Grátis
+                        Free
                     </span>
                 </div>
                 <div className="border-t border-[var(--border)] pt-3 flex justify-between">
@@ -50,14 +50,14 @@ export default function CartTotal(props: CartTotalProps) {
             </div>
 
             <button className="mt-5 w-full bg-[var(--brand)] hover:bg-[var(--brand-dark)] active:scale-[0.99] text-white font-semibold py-3.5 rounded-xl transition-all duration-200 text-sm">
-                Finalizar compra →
+                Checkout →
             </button>
 
             <button
                 onClick={clear}
                 className="mt-2 w-full text-sm text-[var(--text-muted)] hover:text-red-500 transition-colors py-2"
             >
-                Esvaziar carrinho
+                Clear cart
             </button>
         </div>
     );

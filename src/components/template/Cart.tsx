@@ -23,12 +23,9 @@ export default function Cart() {
                     <line x1="3" y1="6" x2="21" y2="6" />
                     <path d="M16 10a4 4 0 01-8 0" />
                 </svg>
-
-                {/* Texto some em telas pequenas */}
                 <span className="hidden sm:inline text-sm font-medium text-[var(--text-secondary)] group-hover:text-[var(--brand)] transition-colors">
-                    Carrinho
+                    Cart
                 </span>
-
                 {itemsQuantity ? (
                     <span className="w-5 h-5 bg-[var(--brand)] rounded-full flex items-center justify-center text-white text-xs font-semibold">
                         {itemsQuantity}

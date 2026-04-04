@@ -7,16 +7,16 @@ import ProductCard from "./ProductCard";
 type SortOption = "none" | "az" | "za" | "asc" | "desc";
 
 const options: { value: SortOption; label: string }[] = [
-    { value: "none", label: "Ordenar por" },
+    { value: "none", label: "Sort by" },
     { value: "az", label: "A-Z" },
     { value: "za", label: "Z-A" },
-    { value: "asc", label: "Menor preço" },
-    { value: "desc", label: "Maior preço" },
+    { value: "asc", label: "Lowest price" },
+    { value: "desc", label: "Highest price" },
 ];
 
 export default function ProductSort({
     products,
-    title = "Todos os produtos",
+    title = "All products",
 }: {
     products: Product[];
     title?: string;
@@ -67,9 +67,7 @@ export default function ProductSort({
                     </h2>
                     <p className="text-sm text-[var(--text-muted)] mt-0.5">
                         {sorted.length}{" "}
-                        {query
-                            ? "resultados encontrados"
-                            : "produtos disponíveis"}
+                        {query ? "results found" : "products available"}
                     </p>
                 </div>
 

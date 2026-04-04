@@ -80,10 +80,10 @@ export default function CategoryContent({ products }: { products: Product[] }) {
             <Page hideHeader>
                 <div className="mb-8">
                     <h1 className="text-2xl font-semibold text-[var(--text-primary)]">
-                        Categorias
+                        Categories
                     </h1>
                     <p className="text-sm text-[var(--text-muted)] mt-0.5">
-                        {categories.length} categorias disponíveis
+                        {categories.length} available categories
                     </p>
                 </div>
 
@@ -100,8 +100,8 @@ export default function CategoryContent({ products }: { products: Product[] }) {
                                 <h2 className="text-lg font-semibold text-[var(--text-primary)] capitalize">
                                     {category.replace(/-/g, " ")}
                                 </h2>
-                                <span className="text-xs font-medium text-[var(--text-muted)] bg-[var(--surface-2)] border border-[var(--border)] px-2 py-0.5 rounded-full">
-                                    {grouped[category].length} produtos
+                                <span className="text-xs font-medium ...">
+                                    {grouped[category].length} products
                                 </span>
                             </div>
                             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 sm:gap-6">

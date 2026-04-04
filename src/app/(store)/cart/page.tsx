@@ -25,14 +25,14 @@ export default function PageCart() {
                     >
                         <path d="M19 12H5M12 19l-7-7 7-7" />
                     </svg>
-                    Continuar comprando
+                    Keep shopping
                 </Link>
                 <h1 className="text-2xl font-semibold text-[var(--text-primary)] mt-2">
-                    Meu carrinho
+                    My cart
                     {items.length > 0 && (
                         <span className="text-sm font-normal text-[var(--text-muted)] ml-2">
                             ({items.length}{" "}
-                            {items.length === 1 ? "item" : "itens"})
+                            {items.length === 1 ? "item" : "items"})
                         </span>
                     )}
                 </h1>

@@ -18,26 +18,26 @@ export default async function Home() {
                 />
                 <div className="relative z-10">
                     <p className="text-[var(--brand)] text-sm font-medium mb-2 uppercase tracking-widest">
-                        Novidades
+                        New arrivals
                     </p>
                     <h1
                         className="text-3xl sm:text-4xl font-bold leading-tight max-w-sm"
                         style={{ fontFamily: "var(--font-display)" }}
                     >
-                        Tecnologia que transforma
+                        Technology that transforms
                     </h1>
                     <p className="text-white/60 text-sm mt-2 max-w-xs leading-relaxed">
-                        Os melhores produtos com entrega rápida e preço justo.
+                        The best products with fast delivery and fair pricing.
                     </p>
                     <button className="mt-6 bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white text-sm font-semibold px-6 py-3 rounded-xl transition-colors">
-                        Explorar agora
+                        Explore now
                     </button>
                 </div>
                 <div className="flex flex-row flex-wrap gap-2 sm:gap-4 relative z-10">
                     {[
-                        { label: "Produtos", value: "500+" },
-                        { label: "Clientes", value: "12k+" },
-                        { label: "Avaliação", value: "4.9★" },
+                        { label: "Products", value: "100+" },
+                        { label: "Customers", value: "12k+" },
+                        { label: "Rating", value: "4.9★" },
                     ].map((stat) => (
                         <div
                             key={stat.label}

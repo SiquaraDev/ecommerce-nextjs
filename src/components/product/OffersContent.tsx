@@ -54,7 +54,7 @@ export default function OffersContent({ products }: { products: Product[] }) {
                 </div>
             </div>
 
-            <ProductSort products={deals} title="Ofertas do dia" />
+            <ProductSort products={deals} title="Daily deals" />
         </Page>
     );
 }

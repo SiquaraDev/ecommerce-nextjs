@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import Product from "../model/Product";
 import CartItem from "../model/CartItem";
 
@@ -15,6 +15,22 @@ const CartContext = createContext<CartContextProps>({} as any);
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
     const [items, setItems] = useState<CartItem[]>([]);
+    const [loaded, setLoaded] = useState(false);
+
+    // Carrega do localStorage na inicialização
+    useEffect(() => {
+        try {
+            const saved = localStorage.getItem("cart");
+            if (saved) setItems(JSON.parse(saved));
+        } catch {}
+        setLoaded(true);
+    }, []);
+
+    // Salva no localStorage sempre que mudar
+    useEffect(() => {
+        if (!loaded) return;
+        localStorage.setItem("cart", JSON.stringify(items));
+    }, [items, loaded]);
 
     function add(product: Product) {
         const i = items.findIndex((i) => i.product.id === product.id);

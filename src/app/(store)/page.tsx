@@ -8,7 +8,7 @@ export default async function Home() {
     return (
         <Page>
             {/* Hero banner */}
-            <div className="rounded-2xl bg-[var(--text-primary)] text-white px-5 sm:px-10 py-7 sm:py-12 mb-8 sm:mb-10 flex flex-col sm:flex-row items-start sm:items-center justify-between overflow-hidden relative gap-5">
+            <div className="rounded-2xl bg-[#1a1714] text-white px-5 sm:px-10 py-7 sm:py-12 mb-8 sm:mb-10 flex flex-col sm:flex-row items-start sm:items-center justify-between overflow-hidden relative gap-5">
                 <div
                     className="absolute inset-0 opacity-10"
                     style={{

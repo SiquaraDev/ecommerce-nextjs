@@ -25,7 +25,24 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="pt-BR">
+        <html lang="en" suppressHydrationWarning>
+            <head>
+                <script
+                    dangerouslySetInnerHTML={{
+                        __html: `
+                            (function() {
+                                try {
+                                    var saved = localStorage.getItem('theme');
+                                    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                                    if (saved === 'dark' || (!saved && prefersDark)) {
+                                        document.documentElement.classList.add('dark');
+                                    }
+                                } catch(e) {}
+                            })();
+                        `,
+                    }}
+                />
+            </head>
             <body className={`${dmSans.variable} ${playfair.variable}`}>
                 {children}
             </body>

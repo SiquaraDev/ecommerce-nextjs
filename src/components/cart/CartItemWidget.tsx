@@ -14,8 +14,8 @@ export default function CartItemWidget(props: CartItemWidgetProps) {
         <div className="flex items-center gap-5 bg-[var(--surface)] rounded-2xl border border-[var(--border)] p-4 hover:border-[var(--brand)]/30 transition-colors">
             <div className="relative w-24 h-24 rounded-xl overflow-hidden bg-[var(--surface-3)] flex-shrink-0">
                 <Image
-                    src={item.product.image}
-                    alt={item.product.name}
+                    src={item.product.thumbnail}
+                    alt={item.product.title}
                     fill
                     className="object-cover"
                 />
@@ -23,7 +23,7 @@ export default function CartItemWidget(props: CartItemWidgetProps) {
 
             <div className="flex-1 min-w-0">
                 <h3 className="font-semibold text-[var(--text-primary)] text-base truncate">
-                    {item.product.name}
+                    {item.product.title}
                 </h3>
                 <p className="text-sm text-[var(--text-muted)] mt-0.5 line-clamp-1">
                     {item.product.description}

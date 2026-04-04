@@ -1,6 +1,7 @@
 "use client";
 import CartItem from "@/data/model/CartItem";
 import Image from "next/image";
+import { useDeals } from "@/data/contexts/DealsContext";
 
 export interface CartItemWidgetProps {
     item: CartItem;
@@ -10,6 +11,12 @@ export interface CartItemWidgetProps {
 
 export default function CartItemWidget(props: CartItemWidgetProps) {
     const { item, add, remove } = props;
+    const { dealIds } = useDeals();
+    const onSale = dealIds.has(item.product.id);
+    const discountedPrice =
+        onSale && item.product.discountPercentage > 0
+            ? item.product.price * (1 - item.product.discountPercentage / 100)
+            : item.product.price;
 
     return (
         <div className="w-full bg-[var(--surface)] rounded-2xl border border-[var(--border)] p-3 sm:p-4 hover:border-[var(--brand)]/30 transition-colors">
@@ -32,12 +39,20 @@ export default function CartItemWidget(props: CartItemWidgetProps) {
                     <p className="text-xs text-[var(--text-muted)] mt-0.5 line-clamp-1 hidden sm:block">
                         {item.product.description}
                     </p>
-                    <p className="text-xs text-[var(--text-muted)] mt-1">
-                        R$ {item.product.price.toFixed(2)} × {item.quantity}
-                    </p>
-                    <p className="font-semibold text-sm text-[var(--brand)] mt-0.5">
-                        R$ {(item.product.price * item.quantity).toFixed(2)}
-                    </p>
+                    <div className="flex items-center gap-2 mt-2">
+                        <span className="text-sm text-[var(--text-muted)]">
+                            {onSale && item.product.discountPercentage > 0 && (
+                                <span className="line-through mr-1">
+                                    R$ {item.product.price.toFixed(2)}
+                                </span>
+                            )}
+                            R$ {discountedPrice.toFixed(2)} × {item.quantity}
+                        </span>
+                        <span className="text-[var(--text-muted)]">·</span>
+                        <span className="font-semibold text-[var(--brand)]">
+                            R$ {(discountedPrice * item.quantity).toFixed(2)}
+                        </span>
+                    </div>
                 </div>
             </div>
 

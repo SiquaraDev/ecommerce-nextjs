@@ -1,6 +1,8 @@
 "use client";
 import useCart from "@/data/hooks/useCart";
 import Product from "@/data/model/Product";
+import { useDeals } from "@/data/contexts/DealsContext";
+
 import Image from "next/image";
 
 export interface ProductCardProps {
@@ -9,7 +11,15 @@ export interface ProductCardProps {
 
 export default function ProductCard(props: ProductCardProps) {
     const { add } = useCart();
-    const { title, description, price, thumbnail } = props.product;
+    const { dealIds } = useDeals();
+    const { title, description, price, thumbnail, discountPercentage } =
+        props.product;
+
+    const onSale = dealIds.has(props.product.id);
+    const discountedPrice =
+        onSale && discountPercentage > 0
+            ? price * (1 - discountPercentage / 100)
+            : null;
 
     return (
         <div className="group flex flex-col bg-[var(--surface)] rounded-2xl overflow-hidden border border-[var(--border)] hover:shadow-xl hover:shadow-black/8 hover:-translate-y-1 transition-all duration-300">
@@ -34,9 +44,22 @@ export default function ProductCard(props: ProductCardProps) {
 
                 {/* Preço + botão */}
                 <div className="pt-3 mt-1 border-t border-[var(--border)] flex items-center justify-between gap-2">
-                    <p className="text-base font-bold text-[var(--text-primary)] whitespace-nowrap">
-                        R$ {price.toFixed(2)}
-                    </p>
+                    <div className="flex flex-col">
+                        {discountedPrice ? (
+                            <>
+                                <p className="text-xs text-[var(--text-muted)] line-through">
+                                    $ {price.toFixed(2)}
+                                </p>
+                                <p className="text-base font-bold text-[var(--brand)] whitespace-nowrap">
+                                    $ {discountedPrice.toFixed(2)}
+                                </p>
+                            </>
+                        ) : (
+                            <p className="text-base font-bold text-[var(--text-primary)] whitespace-nowrap">
+                                $ {price.toFixed(2)}
+                            </p>
+                        )}
+                    </div>
                     <button
                         onClick={() => add(props.product)}
                         className="flex items-center justify-center gap-1 bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white font-semibold px-2 py-2 rounded-xl transition-all duration-200 active:scale-95 min-w-0"

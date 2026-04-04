@@ -30,7 +30,7 @@ export default function Header() {
                         Categorias
                     </a>
                     <a
-                        href="#"
+                        href="/offers"
                         className="hover:text-[var(--text-primary)] transition-colors"
                     >
                         Ofertas
@@ -154,7 +154,7 @@ export default function Header() {
                         Categorias
                     </a>
                     <a
-                        href="#"
+                        href="/offers"
                         className="hover:text-[var(--text-primary)] transition-colors"
                     >
                         Ofertas

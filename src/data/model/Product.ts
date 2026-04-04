@@ -3,7 +3,9 @@ export default interface Product {
     title: string;
     description: string;
     price: number;
+    discountPercentage: number;
     thumbnail: string;
     category: string;
     rating: number;
+    onSale?: boolean;
 }

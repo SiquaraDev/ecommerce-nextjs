@@ -1,6 +1,7 @@
 "use client";
 import useCart from "@/data/hooks/useCart";
 import CartItem from "@/data/model/CartItem";
+import { useDeals } from "@/data/contexts/DealsContext";
 
 export interface CartTotalProps {
     items: CartItem[];
@@ -8,10 +9,16 @@ export interface CartTotalProps {
 
 export default function CartTotal(props: CartTotalProps) {
     const { clear } = useCart();
-    const subtotal = props.items.reduce(
-        (acc, item) => acc + item.product.price * item.quantity,
-        0,
-    );
+    const { dealIds } = useDeals();
+    const subtotal = props.items.reduce((acc, item) => {
+        const onSale = dealIds.has(item.product.id);
+        const discountedPrice =
+            onSale && item.product.discountPercentage > 0
+                ? item.product.price *
+                  (1 - item.product.discountPercentage / 100)
+                : item.product.price;
+        return acc + discountedPrice * item.quantity;
+    }, 0);
     const shipping = 0;
     const total = subtotal + shipping;
 

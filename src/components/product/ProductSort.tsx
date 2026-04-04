@@ -14,7 +14,13 @@ const options: { value: SortOption; label: string }[] = [
     { value: "desc", label: "Maior preço" },
 ];
 
-export default function ProductSort({ products }: { products: Product[] }) {
+export default function ProductSort({
+    products,
+    title = "Todos os produtos",
+}: {
+    products: Product[];
+    title?: string;
+}) {
     const [sort, setSort] = useState<SortOption>("none");
     const [open, setOpen] = useState(false);
     const { query } = useSearch();
@@ -57,7 +63,7 @@ export default function ProductSort({ products }: { products: Product[] }) {
             <div className="flex items-center justify-between mb-6 gap-4">
                 <div className="min-w-0">
                     <h2 className="text-lg sm:text-xl font-semibold text-[var(--text-primary)] truncate">
-                        Todos os produtos
+                        {title}
                     </h2>
                     <p className="text-sm text-[var(--text-muted)] mt-0.5">
                         {sorted.length}{" "}

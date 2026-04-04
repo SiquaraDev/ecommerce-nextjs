@@ -1,6 +1,5 @@
-"use client";
-import { CartProvider } from "@/data/contexts/CartContext";
+import Providers from "@/components/template/Providers";
 
-export default function Layout(props: any) {
-    return <CartProvider>{props.children}</CartProvider>;
+export default function Layout({ children }: { children: React.ReactNode }) {
+    return <Providers>{children}</Providers>;
 }

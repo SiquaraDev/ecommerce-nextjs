@@ -1,36 +1,146 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🛍️ Siquara Store
 
-## Getting Started
+Uma aplicação de e-commerce moderna construída com Next.js 15, com design limpo, responsivo e suporte a modo escuro.
 
-First, run the development server:
+![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-38bdf8?style=flat-square&logo=tailwindcss)
+
+## ✨ Funcionalidades
+
+- 🌓 Modo escuro/claro com detecção da preferência do sistema e sem flash ao carregar
+- 🛒 Carrinho de compras completo com controle de quantidade
+- 🔍 Busca de produtos em tempo real
+- 📦 Ordenação de produtos (A-Z, Z-A, preço)
+- 🏷️ Ofertas diárias que atualizam todo dia à meia-noite
+- 📂 Produtos organizados por categoria com navegação sticky
+- 📱 Totalmente responsivo — mobile, tablet e desktop
+- ⚡ Renderização no servidor com Next.js App Router
+- 🔄 ISR (Regeneração Estática Incremental) para dados de produtos
+
+## 🚀 Como começar
+
+### Pré-requisitos
+
+- Node.js 18+
+- npm ou yarn
+
+### Instalação
+
+```bash
+git clone https://github.com/seu-usuario/siquara-store.git
+cd siquara-store
+npm install
+```
+
+### Variáveis de ambiente
+
+Crie um arquivo `.env.local` na raiz do projeto:
+
+```env
+REVALIDATE_SECRET=seu_secret_aleatorio_aqui
+```
+
+Para gerar um secret seguro:
+
+```bash
+openssl rand -base64 32
+```
+
+### Rodando localmente
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Acesse [http://localhost:3000](http://localhost:3000) no seu navegador.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build para produção
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## 🗂️ Estrutura do projeto
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+├── app/
+│   ├── (store)/
+│   │   ├── cart/
+│   │   ├── categories/
+│   │   ├── offers/
+│   │   ├── layout.tsx
+│   │   ├── loading.tsx
+│   │   └── page.tsx
+│   ├── api/
+│   │   └── revalidate-deals/
+│   │       └── route.ts
+│   ├── not-found.tsx
+│   └── layout.tsx
+├── components/
+│   ├── cart/
+│   │   ├── CartItemWidget.tsx
+│   │   ├── CartTotal.tsx
+│   │   └── EmptyCart.tsx
+│   ├── product/
+│   │   ├── CategoryContent.tsx
+│   │   ├── OffersContent.tsx
+│   │   ├── ProductCard.tsx
+│   │   └── ProductSort.tsx
+│   └── template/
+│       ├── Cart.tsx
+│       ├── Footer.tsx
+│       ├── Header.tsx
+│       ├── Logo.tsx
+│       ├── Page.tsx
+│       └── Providers.tsx
+└── data/
+    ├── contexts/
+    │   ├── CartContext.tsx
+    │   ├── DealsContext.tsx
+    │   └── SearchContext.tsx
+    ├── hooks/
+    │   ├── useCart.ts
+    │   └── useTheme.ts
+    ├── model/
+    │   ├── CartItem.ts
+    │   └── Product.ts
+    └── services/
+        └── ProductService.ts
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🌐 Deploy
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Este projeto é otimizado para a [Vercel](https://vercel.com).
 
-## Deploy on Vercel
+### Configuração na Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Suba o repositório para o GitHub
+2. Importe o projeto na Vercel
+3. Adicione a variável `REVALIDATE_SECRET` em **Settings → Environment Variables**
+4. Faça o deploy
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+O `vercel.json` configura um cron job que revalida as ofertas todo dia à meia-noite (UTC):
+
+```json
+{
+    "crons": [
+        {
+            "path": "/api/revalidate-deals?secret={{REVALIDATE_SECRET}}",
+            "schedule": "0 0 * * *"
+        }
+    ]
+}
+```
+
+## 🛠️ Tecnologias utilizadas
+
+| Tecnologia    | Finalidade                              |
+| ------------- | --------------------------------------- |
+| Next.js 15    | Framework principal                     |
+| TypeScript    | Tipagem estática                        |
+| Tailwind CSS  | Estilização                             |
+| DummyJSON API | Dados dos produtos                      |
+| Google Fonts  | Tipografia (DM Sans + Playfair Display) |

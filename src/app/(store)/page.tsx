@@ -7,7 +7,8 @@ export default async function Home() {
 
     return (
         <Page>
-            <div className="rounded-2xl bg-[var(--text-primary)] text-white px-10 py-12 mb-10 flex items-center justify-between overflow-hidden relative">
+            {/* Hero banner */}
+            <div className="rounded-2xl bg-[var(--text-primary)] text-white px-5 sm:px-10 py-7 sm:py-12 mb-8 sm:mb-10 flex flex-col sm:flex-row items-start sm:items-center justify-between overflow-hidden relative gap-5">
                 <div
                     className="absolute inset-0 opacity-10"
                     style={{
@@ -20,7 +21,7 @@ export default async function Home() {
                         Novidades
                     </p>
                     <h1
-                        className="text-4xl font-bold leading-tight max-w-sm"
+                        className="text-3xl sm:text-4xl font-bold leading-tight max-w-sm"
                         style={{ fontFamily: "var(--font-display)" }}
                     >
                         Tecnologia que transforma
@@ -32,17 +33,19 @@ export default async function Home() {
                         Explorar agora
                     </button>
                 </div>
-                <div className="hidden md:flex gap-4 relative z-10">
+                <div className="flex flex-row flex-wrap gap-2 sm:gap-4 relative z-10">
                     {[
-                        { label: "Produtos", value: "100+" },
+                        { label: "Produtos", value: "500+" },
                         { label: "Clientes", value: "12k+" },
                         { label: "Avaliação", value: "4.9★" },
                     ].map((stat) => (
                         <div
                             key={stat.label}
-                            className="text-center bg-white/10 rounded-xl px-6 py-4 backdrop-blur-sm"
+                            className="text-center bg-white/10 rounded-xl px-4 sm:px-6 py-3 sm:py-4 backdrop-blur-sm"
                         >
-                            <p className="text-2xl font-bold">{stat.value}</p>
+                            <p className="text-xl sm:text-2xl font-bold">
+                                {stat.value}
+                            </p>
                             <p className="text-white/60 text-xs mt-0.5">
                                 {stat.label}
                             </p>
@@ -51,6 +54,7 @@ export default async function Home() {
                 </div>
             </div>
 
+            {/* Products */}
             <div>
                 <div className="flex items-center justify-between mb-6">
                     <div>
@@ -65,7 +69,7 @@ export default async function Home() {
                         Ver todos →
                     </button>
                 </div>
-                <div className="flex gap-6 flex-wrap justify-start">
+                <div className="grid grid-cols-2 min-[400px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 sm:gap-6">
                     {products.map((product) => (
                         <ProductCard key={product.id} product={product} />
                     ))}

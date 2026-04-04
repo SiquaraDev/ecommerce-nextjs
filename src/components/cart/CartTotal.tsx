@@ -1,3 +1,4 @@
+"use client";
 import useCart from "@/data/hooks/useCart";
 import CartItem from "@/data/model/CartItem";
 

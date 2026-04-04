@@ -42,7 +42,7 @@ export default function PageCart() {
                 <EmptyCart />
             ) : (
                 <div className="flex flex-col lg:flex-row gap-6 items-start">
-                    <div className="flex-1 flex flex-col gap-3">
+                    <div className="flex-1 flex flex-col gap-3 w-full min-w-0">
                         {items.map((item) => (
                             <CartItemWidget
                                 key={item.product.id}

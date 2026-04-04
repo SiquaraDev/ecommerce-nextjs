@@ -1,3 +1,4 @@
+"use client";
 import CartItem from "@/data/model/CartItem";
 import Image from "next/image";
 
@@ -11,35 +12,37 @@ export default function CartItemWidget(props: CartItemWidgetProps) {
     const { item, add, remove } = props;
 
     return (
-        <div className="flex items-center gap-5 bg-[var(--surface)] rounded-2xl border border-[var(--border)] p-4 hover:border-[var(--brand)]/30 transition-colors">
-            <div className="relative w-24 h-24 rounded-xl overflow-hidden bg-[var(--surface-3)] flex-shrink-0">
-                <Image
-                    src={item.product.thumbnail}
-                    alt={item.product.title}
-                    fill
-                    className="object-cover"
-                />
-            </div>
+        <div className="w-full bg-[var(--surface)] rounded-2xl border border-[var(--border)] p-3 sm:p-4 hover:border-[var(--brand)]/30 transition-colors">
+            <div className="flex items-start gap-3">
+                {/* Imagem menor no mobile */}
+                <div className="relative w-16 h-16 sm:w-24 sm:h-24 rounded-xl overflow-hidden bg-[var(--surface-3)] flex-shrink-0">
+                    <Image
+                        src={item.product.thumbnail}
+                        alt={item.product.title}
+                        fill
+                        className="object-cover"
+                    />
+                </div>
 
-            <div className="flex-1 min-w-0">
-                <h3 className="font-semibold text-[var(--text-primary)] text-base truncate">
-                    {item.product.title}
-                </h3>
-                <p className="text-sm text-[var(--text-muted)] mt-0.5 line-clamp-1">
-                    {item.product.description}
-                </p>
-                <div className="flex items-center gap-2 mt-2">
-                    <span className="text-sm text-[var(--text-muted)]">
-                        $ {item.product.price.toFixed(2)} × {item.quantity}
-                    </span>
-                    <span className="text-[var(--text-muted)]">·</span>
-                    <span className="font-semibold text-[var(--brand)]">
-                        $ {(item.product.price * item.quantity).toFixed(2)}
-                    </span>
+                {/* Título e descrição */}
+                <div className="flex-1 min-w-0">
+                    <h3 className="font-semibold text-[var(--text-primary)] text-sm sm:text-base leading-snug line-clamp-2">
+                        {item.product.title}
+                    </h3>
+                    <p className="text-xs text-[var(--text-muted)] mt-0.5 line-clamp-1 hidden sm:block">
+                        {item.product.description}
+                    </p>
+                    <p className="text-xs text-[var(--text-muted)] mt-1">
+                        R$ {item.product.price.toFixed(2)} × {item.quantity}
+                    </p>
+                    <p className="font-semibold text-sm text-[var(--brand)] mt-0.5">
+                        R$ {(item.product.price * item.quantity).toFixed(2)}
+                    </p>
                 </div>
             </div>
 
-            <div className="flex items-center gap-2 flex-shrink-0">
+            {/* Controles abaixo no mobile */}
+            <div className="flex items-center justify-end gap-2 mt-3 pt-3 border-t border-[var(--border)]">
                 <button
                     onClick={() => remove(item)}
                     className="w-8 h-8 rounded-lg border border-[var(--border)] flex items-center justify-center text-[var(--text-secondary)] hover:border-red-300 hover:text-red-500 hover:bg-red-50 transition-all"

@@ -7,7 +7,7 @@ export default function Cart() {
 
     return (
         <Link href="/cart">
-            <div className="relative flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--border)] bg-[var(--surface)] hover:border-[var(--brand)] transition-all duration-200 group">
+            <div className="relative flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full border border-[var(--border)] bg-[var(--surface)] hover:border-[var(--brand)] transition-all duration-200 group">
                 <svg
                     width="18"
                     height="18"
@@ -17,15 +17,18 @@ export default function Cart() {
                     strokeWidth="1.5"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="text-[var(--text-secondary)] group-hover:text-[var(--brand)] transition-colors"
+                    className="text-[var(--text-secondary)] group-hover:text-[var(--brand)] transition-colors flex-shrink-0"
                 >
                     <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
                     <line x1="3" y1="6" x2="21" y2="6" />
                     <path d="M16 10a4 4 0 01-8 0" />
                 </svg>
-                <span className="text-sm font-medium text-[var(--text-secondary)] group-hover:text-[var(--brand)] transition-colors">
+
+                {/* Texto some em telas pequenas */}
+                <span className="hidden sm:inline text-sm font-medium text-[var(--text-secondary)] group-hover:text-[var(--brand)] transition-colors">
                     Carrinho
                 </span>
+
                 {itemsQuantity ? (
                     <span className="w-5 h-5 bg-[var(--brand)] rounded-full flex items-center justify-center text-white text-xs font-semibold">
                         {itemsQuantity}

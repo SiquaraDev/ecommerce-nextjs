@@ -1,8 +1,18 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import { DM_Sans, Playfair_Display } from "next/font/google";
+import "../../globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const dmSans = DM_Sans({
+    subsets: ["latin"],
+    weight: ["300", "400", "500", "600"],
+    variable: "--font-body",
+});
+
+const playfair = Playfair_Display({
+    subsets: ["latin"],
+    weight: ["500", "700"],
+    variable: "--font-display",
+});
 
 export const metadata: Metadata = {
     title: "Siquara Store",
@@ -15,8 +25,10 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
-            <body className={inter.className}>{children}</body>
+        <html lang="pt-BR">
+            <body className={`${dmSans.variable} ${playfair.variable}`}>
+                {children}
+            </body>
         </html>
     );
 }

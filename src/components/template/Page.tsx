@@ -1,5 +1,6 @@
 "use client";
 import Header from "./Header";
+import Footer from "./Footer";
 
 export interface PageProps {
     children: React.ReactNode;
@@ -16,6 +17,7 @@ export default function Page(props: PageProps) {
             >
                 {props.children}
             </main>
+            <Footer />
         </div>
     );
 }

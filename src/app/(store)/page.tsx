@@ -1,4 +1,4 @@
-import ProductCard from "@/components/product/ProductCard";
+import ProductSort from "@/components/product/ProductSort";
 import Page from "@/components/template/Page";
 import { fetchProducts } from "@/data/services/ProductService";
 
@@ -55,26 +55,7 @@ export default async function Home() {
             </div>
 
             {/* Products */}
-            <div>
-                <div className="flex items-center justify-between mb-6">
-                    <div>
-                        <h2 className="text-xl font-semibold text-[var(--text-primary)]">
-                            Todos os produtos
-                        </h2>
-                        <p className="text-sm text-[var(--text-muted)] mt-0.5">
-                            {products.length} produtos disponíveis
-                        </p>
-                    </div>
-                    <button className="text-sm text-[var(--brand)] font-medium hover:underline">
-                        Ver todos →
-                    </button>
-                </div>
-                <div className="grid grid-cols-2 min-[400px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 sm:gap-6">
-                    {products.map((product) => (
-                        <ProductCard key={product.id} product={product} />
-                    ))}
-                </div>
-            </div>
+            <ProductSort products={products} />
         </Page>
     );
 }

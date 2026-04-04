@@ -2,11 +2,11 @@ import Link from "next/link";
 
 export default function NotFound() {
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen gap-6 text-center px-4">
-            <div className="w-24 h-24 rounded-2xl bg-[var(--surface-3)] flex items-center justify-center">
+        <div className="flex flex-col items-center justify-center min-h-screen gap-6 text-center px-6">
+            <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-[var(--surface-3)] flex items-center justify-center">
                 <svg
-                    width="44"
-                    height="44"
+                    width="36"
+                    height="36"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -23,11 +23,11 @@ export default function NotFound() {
             </div>
 
             <div>
-                <p className="text-[var(--brand)] text-sm font-medium uppercase tracking-widest mb-2">
+                <p className="text-[var(--brand)] text-xs sm:text-sm font-medium uppercase tracking-widest mb-2">
                     Error 404
                 </p>
                 <h1
-                    className="text-4xl sm:text-5xl font-bold text-[var(--text-primary)]"
+                    className="text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--text-primary)]"
                     style={{ fontFamily: "var(--font-display)" }}
                 >
                     Page not found
@@ -37,10 +37,10 @@ export default function NotFound() {
                 </p>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
                 <Link
                     href="/"
-                    className="inline-flex items-center gap-2 bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white font-medium px-6 py-3 rounded-xl text-sm transition-colors"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[var(--brand)] hover:bg-[var(--brand-dark)] text-white font-medium px-6 py-3 rounded-xl text-sm transition-colors"
                 >
                     <svg
                         width="14"
@@ -57,7 +57,7 @@ export default function NotFound() {
                 </Link>
                 <Link
                     href="/categories"
-                    className="inline-flex items-center gap-2 border border-[var(--border)] hover:border-[var(--brand)] text-[var(--text-secondary)] hover:text-[var(--brand)] font-medium px-6 py-3 rounded-xl text-sm transition-colors"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-[var(--border)] hover:border-[var(--brand)] text-[var(--text-secondary)] hover:text-[var(--brand)] font-medium px-6 py-3 rounded-xl text-sm transition-colors"
                 >
                     Browse categories
                 </Link>

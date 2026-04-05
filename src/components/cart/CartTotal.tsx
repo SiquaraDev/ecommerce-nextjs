@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import useCart from "@/data/hooks/useCart";
 import CartItem from "@/data/model/CartItem";
 import { useDeals } from "@/data/contexts/DealsContext";
@@ -49,9 +50,12 @@ export default function CartTotal(props: CartTotalProps) {
                 </div>
             </div>
 
-            <button className="mt-5 w-full bg-[var(--brand)] hover:bg-[var(--brand-dark)] active:scale-[0.99] text-white font-semibold py-3.5 rounded-xl transition-all duration-200 text-sm">
+            <Link
+                href="/checkout"
+                className="mt-5 w-full bg-[var(--brand)] hover:bg-[var(--brand-dark)] active:scale-[0.99] text-white font-semibold py-3.5 rounded-xl transition-all duration-200 text-sm text-center block"
+            >
                 Checkout →
-            </button>
+            </Link>
 
             <button
                 onClick={clear}

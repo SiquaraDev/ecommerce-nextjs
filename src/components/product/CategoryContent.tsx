@@ -39,7 +39,7 @@ export default function CategoryContent({ products }: { products: Product[] }) {
             if (el) observer.observe(el);
         });
         return () => observer.disconnect();
-    }, []);
+    }, [categories]);
 
     function scrollTo(category: string) {
         const el = sectionRefs.current[category];

@@ -1,7 +1,16 @@
+"use client";
+import useCart from "@/data/hooks/useCart";
 import Link from "next/link";
 import Page from "@/components/template/Page";
+import { useEffect } from "react";
 
 export default function CheckoutPage() {
+    const { clear } = useCart();
+
+    useEffect(() => {
+        clear();
+    }, []);
+
     return (
         <Page>
             <div className="flex flex-col items-center justify-center min-h-[70vh] text-center gap-6 px-4">

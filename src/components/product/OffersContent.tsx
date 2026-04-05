@@ -30,7 +30,8 @@ export default function OffersContent({ products }: { products: Product[] }) {
                         Daily deals
                     </h1>
                     <p className="text-white/60 text-sm mt-2 max-w-xs leading-relaxed">
-                        Selected products at the best prices. Don't miss out!
+                        Selected products at the best prices. Don&apos;t miss
+                        out!
                     </p>
                 </div>
                 <div className="flex flex-row flex-wrap gap-2 sm:gap-4 relative z-10">
